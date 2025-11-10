@@ -1,27 +1,53 @@
-from math import sqrt
+DATA = [ '1', '0', 'H', '1', '0', 'H', '8', '6', '3', '2', '11', '8', '2',
+            '7', '2', '1', '0', '0', '2.2', '3.2', '3.5', '2.25', '3.2', '3.4',
+            '2.3', '3.1', '3.1', '2.2', '3', '3.3', '2.28', '3.17', '3.69', '2.3', 
+            '3.2', '3.2', '2.25', '3.2', '3.5', '41', '2.33', '2.25', '3.25', '3.14', 
+            '3.75', '3.41', '35', '2.5', '2.31', '1.67', '1.6', '20', '-0.25', '1.97', 
+            '1.91', '2.01', '1.96', '2.46', '3.23', '3.29' ]
 
-#### Fonction secondaire
+def parse(value):
+    """retourne la valeur typÃ©e de l'argument
 
 
-def isprime(p):
+    Args:
+        value (str): valeur Ã  parser
 
-    # votre code ici
+    Returns:
+        int, float ou str: selon le contenu de value
 
-    pass
+    >>> parse('1')
+    1
+    >>> parse('0')
+    0
+    >>> parse('-1')
+    -1
+    >>> parse('3.14')
+    3.14
+    >>> parse('0.0')
+    0.0
+    >>> parse('-0.0123456')
+    -0.0123456
+    >>> parse('ABC')
+    'ABC'
+    >>> parse('')
+    ''
+    >>> parse('3x2')
+    '3x2'
+    """
+    try:
+       nombre = int(value)
+       print("Vous avez saisi le nombre :", nombre)
+    except ValueError:
+        print("Erreur : le texte n'est pas un nombre !")
 
-#### Fonction principale
-
+    parsed_value = value
+    return parsed_value
 
 def main():
+    
+    l = [ parse(value) for value in DATA]
+    print(l)
+    pass
 
-    # vos appels à la fonction secondaire ici
-
-    for n in range(100):
-        if isprime(n):
-            print(n, end=", ")
-
-    print()
-
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
